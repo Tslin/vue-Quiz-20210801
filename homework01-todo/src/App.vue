@@ -4,10 +4,7 @@
     <div class="todo-lists">
       <h3>Todo List</h3>
       <ul>
-        <li v-for="i in todoLists" :key="i.id">
-          <label><input v-model="i.isDone" type="checkbox"> {{ i.title }}</label>
-        </li>
-        
+        <listitem :paramList='todoLists'></listitem>     
         <!-- <list-item v-for="i in todoLists" :key="i.id"></list-item> -->
       </ul>
     </div>
@@ -15,21 +12,24 @@
     <div class="done-lists">
       <h3>Done List</h3>
       <ul>
-        <li v-for="i in doneLists" :key="i.id">
-          <label><input v-model="i.isDone" type="checkbox"> {{ i.title }}</label>
-        </li>
-
+        <listitem :paramList='doneLists'></listitem>
         <!-- <list-item v-for="i in doneLists" :key="i.id"></list-item> -->
       </ul>
     </div>
   </div>
 </div>
 
+
 </template>
 
 <script>
+import listitem from './components/ListItem.vue';
+
 export default {
   name: 'App',
+  components:{
+    listitem
+  },
   data() {
     return {
       lists: [{
@@ -83,7 +83,5 @@ h3 {
   padding: 1rem;
 }
 
-li {
-  margin-bottom: 5px;
-}
+
 </style>
